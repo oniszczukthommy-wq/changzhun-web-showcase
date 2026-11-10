@@ -1,0 +1,32 @@
+{
+  "productName": "唱准助手",
+  "identifier": "local.changzhun.windows",
+  "version": "0.3.0-preview.changzhun",
+  "app": {
+    "windows": [
+      {
+        "title": "唱准助手",
+        "width": 1280,
+        "height": 820,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true,
+        "maximized": true
+      }
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  },
+  "bundle": {
+    "targets": ["nsis"],
+    "resources": {
+      "directml/DirectML.dll": "DirectML.dll",
+      "directml/LICENSE.txt": "DirectML-LICENSE.txt"
+    }
+  }
+}

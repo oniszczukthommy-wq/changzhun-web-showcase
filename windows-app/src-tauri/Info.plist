@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- the languages in src-tauri/messages/ (each one's permission prompts: build.rs writes <lang>.lproj/InfoPlist.strings) -->
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>de</string>
+    <string>en</string>
+    <string>es</string>
+    <string>es-419</string>
+    <string>fr</string>
+    <string>hi</string>
+    <string>id</string>
+    <string>it</string>
+    <string>ja</string>
+    <string>ko</string>
+    <string>nl</string>
+    <string>pl</string>
+    <string>pt</string>
+    <string>ru</string>
+    <string>th</string>
+    <string>tr</string>
+    <string>vi</string>
+    <string>zh-Hans</string>
+    <string>zh-Hant</string>
+  </array>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>OnKey listens to your singing to show how in tune you are. Your recordings stay on your Mac.</string>
+  <key>NSAudioCaptureUsageDescription</key>
+  <string>OnKey listens to the music playing on your Mac to learn the singer's melody. It never saves the music or sends it. In listening mode a short fingerprint of it (not the audio) goes to Apple's Shazam to name the song.</string>
+  <key>NSAppleEventsUsageDescription</key>
+  <string>OnKey asks Spotify, Music or your browser (for YouTube) what's playing and controls playback when you press play, skip or start over.</string>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLName</key>
+      <string>OnKey take link</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>onkey</string>
+      </array>
+    </dict>
+  </array>
+</dict>
+</plist>

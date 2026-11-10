@@ -1,0 +1,10 @@
+# Cloudflare Pages response headers (other hosts serve this file as-is and ignore it). Copied to out/ by `npm run build`.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+# Next.js puts a content hash in every file name under _next/static, so they never change.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

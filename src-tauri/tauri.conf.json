@@ -1,0 +1,80 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "OnKey",
+  "version": "0.1.0",
+  "identifier": "audio.onkey.app",
+  "build": {
+    "frontendDist": "../ui/out",
+    "devUrl": "http://localhost:3000",
+    "beforeDevCommand": "npm --prefix ui run dev",
+    "beforeBuildCommand": "npm --prefix ui run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "OnKey",
+        "width": 1280,
+        "height": 820,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "maximized": true,
+        "transparent": true
+      }
+    ],
+    "security": {
+      "csp": {
+        "frame-src": "'none'"
+      },
+      "dangerousDisableAssetCspModification": true,
+      "assetProtocol": {
+        "enable": true,
+        "scope": [
+          "$APPDATA/takes/**"
+        ]
+      }
+    },
+    "macOSPrivateApi": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDU5RjUzMDNDNkU1OEQ4REQKUldUZDJGaHVQREQxV2V6RTBQZjZZY2N5eU9xV1dkeVN2VGFkOTl5T0JZK2g5dXlLV0JDVFpCN0EK",
+      "endpoints": [
+        "https://github.com/dsmurrell/onkey/releases/latest/download/latest.json"
+      ]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "createUpdaterArtifacts": false,
+    "targets": [
+      "app",
+      "dmg"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "Music",
+    "shortDescription": "A singing trainer: learn to sing the songs you love",
+    "macOS": {
+      "minimumSystemVersion": "14.2"
+    },
+    "resources": {
+      "../THIRD_PARTY_NOTICES.md": "THIRD_PARTY_NOTICES.md",
+      "models/crepe-full-b32.onnx": "models/crepe-full-b32.onnx",
+      "models/UVR_MDXNET_KARA_2.onnx": "models/UVR_MDXNET_KARA_2.onnx",
+      "models/wav2vec2-base-960h-fp16.onnx": "models/wav2vec2-base-960h-fp16.onnx",
+      "models/game/encoder.onnx": "models/game/encoder.onnx",
+      "models/game/segmenter.onnx": "models/game/segmenter.onnx",
+      "models/game/estimator.onnx": "models/game/estimator.onnx",
+      "models/game/dur2bd.onnx": "models/game/dur2bd.onnx",
+      "models/game/bd2dur.onnx": "models/game/bd2dur.onnx"
+    }
+  }
+}

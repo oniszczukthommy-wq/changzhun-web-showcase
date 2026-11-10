@@ -1,0 +1,79 @@
+name: Bug report
+description: Something in OnKey went wrong (notes or lyrics out of step, a wrong song, a crash, an unfair score)
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. The quickest way to a fix is a report zip from the app:
+        **Settings → About → Report a problem** (also in the Help menu, and on a take's page as
+        "Report a problem with this take"). It shows you everything that goes in the zip before saving it on
+        your Mac: numbers and logs, no audio, no lyrics, no recordings of you (the logs do name the songs you played).
+        Nothing is uploaded. Attach it below if you're happy to.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what OnKey did instead. Roughly when in the song, if it matters.
+    validations:
+      required: true
+  - type: input
+    id: song
+    attributes:
+      label: Song (optional)
+      description: Artist and title, if it's about one song.
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      description: Apple menu → About This Mac
+      placeholder: e.g. macOS 15.1
+    validations:
+      required: true
+  - type: input
+    id: mac
+    attributes:
+      label: Mac model
+      description: Model, chip and memory
+      placeholder: e.g. MacBook Air M2, 8 GB
+    validations:
+      required: true
+  - type: dropdown
+    id: app
+    attributes:
+      label: Music app
+      options:
+        - Spotify
+        - Apple Music
+        - YouTube in a browser
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Follow the music app, or Listen only?
+      description: "Settings → Let OnKey control: Spotify, Apple Music and YouTube all off is Listen only"
+      options:
+        - Following the music app (default)
+        - Listen only
+        - Not sure
+  - type: input
+    id: output
+    attributes:
+      label: Output device
+      description: Where you heard the music
+      placeholder: e.g. AirPods Pro, MacBook speakers, wired headphones, USB interface
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: OnKey version
+      description: Shown in Settings, under Updates ("OnKey 0.1.0")
+      placeholder: e.g. 0.1.0
+  - type: textarea
+    id: report
+    attributes:
+      label: Report zip and screenshots
+      description: Drag the zip from Report a problem here (optional), and any screenshots or a short screen recording.

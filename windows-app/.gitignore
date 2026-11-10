@@ -1,0 +1,35 @@
+node_modules/
+ui/node_modules/
+ui/out/
+ui/.next/
+src-tauri/target/
+src-tauri/gen/schemas/
+.DS_Store
+# large models are fetched, not committed (see src-tauri/models/README.md)
+src-tauri/models/*.onnx
+src-tauri/models/game/
+!src-tauri/models/crepe-tiny.onnx
+ui/public/test-*
+src-tauri/target-dist/
+
+# never commit secrets, recordings or build output
+.env*
+*.key
+*.p8
+*.p12
+*.mobileprovision
+*.provisionprofile
+*.wav
+*.m4a
+*.f32
+*.ndjson
+site/out/
+
+# which private commit a public export is (written by the export, never committed)
+src-tauri/.source-commit
+
+# the demo video is hosted outside the repo; a local copy for previewing the site
+site/public/demo.mp4
+
+# DirectML.dll for the Windows build (scripts/fetch-directml.sh)
+src-tauri/directml/

@@ -1,0 +1,9 @@
+# Python packages scripts/fetch-models.sh needs to export two of the models (CREPE, wav2vec2) from their published
+# weights. These versions reproduce the files byte for byte, so their SHA-256s match src-tauri/src/models.rs.
+#   python3 -m venv .venv && .venv/bin/pip install -r scripts/requirements-models.txt
+#   PYTHON=.venv/bin/python scripts/fetch-models.sh
+torch==2.14.1
+torchaudio==2.11.0
+torchcrepe==0.0.24
+onnx==1.23.2
+onnxruntime==1.31.0

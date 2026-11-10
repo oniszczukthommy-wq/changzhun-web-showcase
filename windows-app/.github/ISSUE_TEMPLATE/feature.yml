@@ -1,0 +1,26 @@
+name: Idea or feature request
+description: Something OnKey could do, or do better
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For Windows or Linux, please add a thumbs-up reaction to the pinned "Want OnKey on Windows/Linux?" issue instead of
+        opening a new one.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The situation, and what gets in the way today.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?
+      description: Your idea, if you have one. Rough is fine.
+  - type: input
+    id: setup
+    attributes:
+      label: Your setup (optional)
+      description: Music app, output device, Mac, if it matters for this.

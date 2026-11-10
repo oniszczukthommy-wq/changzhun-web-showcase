@@ -1,0 +1,10 @@
+[package]
+name = "changzhun-core"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Portable audio maths shared by the Changzhun singing trainer"
+publish = false
+
+[dependencies]
+realfft = "=3.5.0"

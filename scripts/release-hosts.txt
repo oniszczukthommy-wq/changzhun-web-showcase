@@ -1,0 +1,31 @@
+# Every web host whose address is inside a release of OnKey, and why. scripts/check-dmg.sh fails a build that
+# mentions any host not listed here, so a new network call (or a library that brings one) is a decision, not a
+# surprise. One host per line: <host or *.domain>  <kind>  # why
+#   contacts: OnKey (or its window) connects to it
+#   link:     only opened in your browser or music app when you click something
+#   text:     only text inside a library (documentation links in error messages, XML namespaces); never contacted
+# Shazam isn't listed: sound recognition goes through Apple's ShazamKit, a part of macOS, not a web address in OnKey.
+
+lrclib.net              contacts  # synced lyrics for a song (lyrics.rs)
+itunes.apple.com        contacts  # Apple's public song search and lookup: names, lengths, covers (music.rs, recognize.rs)
+*.mzstatic.com          contacts  # Apple's cover images, only from addresses Apple's search returned (music.rs)
+i.ytimg.com             contacts  # a YouTube video's thumbnail as its cover (youtube.rs)
+github.com              contacts  # update check (latest.json from this repo's releases); "Report a problem" opens an issue form
+open.spotify.com        link      # open a song or the starter playlist in Spotify
+music.apple.com         link      # open a song in Apple Music
+www.youtube.com         link      # open or search a song on YouTube
+dsmurrell.com           link      # "Made by" in Settings
+discord.gg              link      # "Join OnKey's Discord" in Settings
+singonkey.app           link      # OnKey's website (allowed for Settings links)
+
+arxiv.org               text      # papers cited in model library messages
+ieeexplore.ieee.org     text      # papers cited in model library messages
+numpy.org               text      # library documentation links
+docs.scipy.org          text      # library documentation links
+docs.rs                 text      # library documentation links
+docs.nvidia.com         text      # ONNX Runtime's messages about GPU providers (not used on a Mac)
+en.wikipedia.org        text      # library documentation links
+www.w3.org              text      # XML and SVG namespaces
+nextjs.org              text      # the interface framework's error messages
+react.dev               text      # the interface framework's error messages
+tailwindcss.com         text      # a comment in the interface's stylesheet

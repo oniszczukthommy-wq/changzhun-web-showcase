@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* OnKey design tokens. Dark, focused, one accent; pitch colours carry meaning (good / close / off). */
+@theme {
+  --color-ink-950: #07080c;
+  --color-ink-900: #0b0d13;
+  --color-ink-850: #10131b;
+  --color-ink-800: #151924;
+  --color-ink-700: #1e2331;
+  --color-ink-600: #2a3142;
+  --color-ink-500: #3a4357;
+  --color-ink-400: #5d6780;
+  --color-ink-300: #8b94ab;
+  --color-ink-200: #b9c0d0;
+  --color-ink-100: #e6e9f0;
+  --color-accent-300: #b5a8ff;
+  --color-accent-400: #9b8aff;
+  --color-accent-500: #7c6cf6;
+  --color-accent-600: #6252e0;
+  --color-good: #34d27b;
+  --color-close: #f5b83d;
+  --color-off: #f2626b;
+  --font-sans: "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-rise: rise .45s cubic-bezier(.2,.8,.2,1) both;
+  @keyframes shimmer { from { background-position: -200% 0 } to { background-position: 200% 0 } }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+  --animate-pop: pop .32s cubic-bezier(.3,1.6,.5,1) both;
+  @keyframes pop { 0% { transform: scale(.6) } 55% { transform: scale(1.3) } 100% { transform: scale(1) } }
+}
+
+:root { color-scheme: dark; }
+html, body { background: var(--color-ink-950); color: var(--color-ink-100); }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+::selection { background: color-mix(in srgb, var(--color-accent-500) 40%, transparent); }
+
+/* Cards. No backdrop-filter (here or anywhere large): macOS re-blurs what's behind a backdrop filter on every frame
+   the window draws, in WindowServer, which made an idle window expensive. Over the page's near-flat background a
+   translucent fill looks the same as frosted glass; over the lane it's a little more opaque instead. */
+.glass {
+  background: color-mix(in srgb, var(--color-ink-850) 80%, transparent);
+  border: 1px solid color-mix(in srgb, white 7%, transparent);
+}
+/* over the lane's ribbon: lighter than .glass, the ribbon's colours showing through, with a top highlight */
+.frost {
+  background: linear-gradient(180deg, rgba(22,26,38,.74), rgba(14,17,26,.82));
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 30px 60px -20px rgba(0,0,0,.55);
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, white 9%, transparent) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* inside the desktop app the title bar is transparent: leave room for the window buttons, drag by the header */
+html.in-app .app-header { padding-left: 88px; }
+
+/* mini mode: the window is transparent around a rounded card */
+html.mini, html.mini body { background: transparent; }
+
+/* the live mirror (development builds): controls only watch */
+html.mirror button, html.mirror input, html.mirror select, html.mirror [role=switch] { cursor: not-allowed; }
+
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 2px solid #b5a8ff; outline-offset: 4px; }

@@ -1,0 +1,26 @@
+{
+  "name": "onkey-site",
+  "version": "0.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3080",
+    "prebuild": "node scripts/languages.mjs",
+    "build": "next build",
+    "serve": "npx --yes serve@14.2.4 out -l 3080",
+    "test": "node --experimental-strip-types --test \"tests/*.test.mjs\""
+  },
+  "dependencies": {
+    "next": "15.5.27",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "use-intl": "4.14.9"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "20.19.43",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  }
+}

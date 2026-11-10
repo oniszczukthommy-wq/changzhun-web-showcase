@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* OnKey's identity: dark ink, one violet accent, pitch colours that mean something (on the note / close / off).
+   Dark is the default, as in the app; a light palette follows the reader's system setting. */
+:root {
+  --bg: #07080c;
+  --bg-raised: #0b0d13;
+  --panel: #10131b;
+  --line: #1e2331;
+  --fg: #e6e9f0;
+  --fg-soft: #b9c0d0;
+  --muted: #8b94ab;
+  --faint: #5d6780;
+  --accent: #7c6cf6;
+  --accent-strong: #6252e0;
+  --accent-soft: #b5a8ff;
+  --accent-wash: color-mix(in srgb, #7c6cf6 14%, transparent);
+  --good: #34d27b;
+  --close: #f5b83d;
+  --off: #f2626b;
+  /* one meaning per colour, on every diagram: the music, the original singer, you, the score */
+  --music: #38bdf8;
+  --singer: #b5a8ff;
+  --you: #34d27b;
+  --score: #f5b83d;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f6fb;
+    --bg-raised: #ffffff;
+    --panel: #ffffff;
+    --line: #e2e2ee;
+    --fg: #14151f;
+    --fg-soft: #33364a;
+    --muted: #5e6378;
+    --faint: #8a8fa6;
+    --accent: #5f4fe0;
+    --accent-strong: #4c3dcc;
+    --accent-soft: #5f4fe0;
+    --accent-wash: color-mix(in srgb, #5f4fe0 10%, transparent);
+    --good: #1a9a55;
+    --close: #b77800;
+    --off: #d23b45;
+    --music: #0284c7;
+    --singer: #5f4fe0;
+    --you: #1a9a55;
+    --score: #b77800;
+    color-scheme: light;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-wash: var(--accent-wash);
+  --color-good: var(--good);
+  --color-close: var(--close);
+  --color-off: var(--off);
+  --color-music: var(--music);
+  --color-singer: var(--singer);
+  --color-you: var(--you);
+  --color-score: var(--score);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html { scroll-padding-top: 5rem; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
+h1, h2, h3 { text-wrap: balance; }
+.tabular { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+/* Long-form docs text */
+.prose { max-width: 65ch; color: var(--fg-soft); line-height: 1.7; font-size: 16px; }
+.prose > * + * { margin-top: 1rem; }
+.prose h1 { color: var(--fg); font-size: 2rem; line-height: 1.15; font-weight: 650; letter-spacing: -0.02em; margin-top: 0; }
+.prose h2 { color: var(--fg); font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; margin-top: 2.5rem; }
+.prose h3 { color: var(--fg); font-size: 1.05rem; font-weight: 600; margin-top: 1.75rem; }
+.prose a { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.prose a:hover { text-decoration-color: currentColor; }
+.prose strong { color: var(--fg); font-weight: 600; }
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: 0.4rem; }
+.prose li::marker { color: var(--faint); }
+.prose code { font-family: var(--font-mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 0.1em 0.35em; }
+.prose pre { font-family: var(--font-mono); font-size: 0.85rem; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; overflow-x: auto; }
+.prose pre code { background: none; border: 0; padding: 0; }
+.prose .lede { font-size: 1.1rem; color: var(--muted); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.prose th, .prose td { text-align: left; padding: 0.6rem 0.9rem; border-top: 1px solid var(--line); vertical-align: top; }
+.prose thead th { border-top: 0; color: var(--muted); font-weight: 500; font-size: 0.82rem; background: var(--bg-raised); }
+.prose td:first-child { white-space: nowrap; }
+.prose td.num, .prose th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.callout { border: 1px solid var(--line); background: var(--accent-wash); border-radius: 12px; padding: 0.9rem 1.1rem; color: var(--fg-soft); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+
+/* Wide explainer sections break out of the 65ch text column; their own text keeps the measure. */
+.prose.docs-wide { max-width: none; }
+.prose.docs-wide > :not(.wide) { max-width: 65ch; }
+.wide { max-width: none; }
+
+/* Scroll-driven explainers: a sticky diagram that follows the step in the middle of the screen. */
+.scrolly-step { color: var(--muted); transition: color 0.3s ease, opacity 0.3s ease; }
+.scrolly-step[data-active="true"] { color: var(--fg-soft); }
+.scrolly-step[data-active="true"] strong { color: var(--fg); }
+.diagram text { font-family: var(--font-sans); }
+.hl { transition: opacity 0.45s ease, stroke-width 0.45s ease, fill-opacity 0.45s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .hl, .scrolly-step { transition: none; }
+}
+
+/* Inline glyphs next to key terms */
+.glyph { display: inline-block; vertical-align: -0.2em; margin: 0 0.15em; overflow: hidden; border-radius: 4px; }
+.glyph svg { display: block; overflow: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .g-scroll { animation: g-scroll 2.4s linear infinite; }
+  .g-up { animation: g-up 2.8s ease-in-out infinite; }
+  .g-down { animation: g-down 2.8s ease-in-out infinite; }
+  .g-fade { animation: g-fade 2.8s ease-in-out infinite; }
+  .g-pulse { animation: g-pulse 1.6s ease-out infinite; }
+  .g-d1 { animation-delay: 0.4s; }
+  .g-slide { animation: g-slide 3s ease-in-out infinite; }
+  .g-grow { transform-origin: 2px 8px; animation: g-grow 2.6s ease-in-out infinite; }
+  @keyframes g-scroll { from { transform: translateX(0); } to { transform: translateX(-8px); } }
+  @keyframes g-up { 0%, 30% { transform: translateY(4px); opacity: 0; } 60%, 100% { transform: none; opacity: 1; } }
+  @keyframes g-down { 0%, 30% { transform: translateY(-4px); opacity: 0; } 60%, 100% { transform: none; opacity: 0.6; } }
+  @keyframes g-fade { 0%, 30% { opacity: 1; } 60%, 100% { opacity: 0; } }
+  @keyframes g-pulse { from { opacity: 1; } to { opacity: 0.15; } }
+  @keyframes g-slide { 0%, 100% { transform: translateX(-6px); } 50% { transform: translateX(6px); } }
+  @keyframes g-grow { 0% { transform: scaleX(0.2); } 60%, 100% { transform: scaleX(1); } }
+}
+
+/* FAQ answers (home page and docs) */
+.faq-answer > * + * { margin-top: 0.6rem; }
+.faq-answer ul { list-style: disc; padding-left: 1.25rem; }
+.faq-answer li + li { margin-top: 0.35rem; }
+.faq-answer li::marker { color: var(--faint); }
+.faq-answer strong { color: var(--fg); font-weight: 600; }
+.faq-answer a { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Diagrams on phones: every diagram draws into a 480-wide box, so on a 375 px screen its labels would shrink to
+   7-8 px. There the diagram goes edge to edge and its labels are drawn larger (CSS overrides SVG's font-size
+   attribute; sizes are in the diagram's own units). */
+@media (max-width: 639px) {
+  .dg text[font-size="10.5"], .dg text[font-size="11"] { font-size: 12.5px; }
+  .dg text[font-size="11.5"] { font-size: 13px; }
+  .dg text[font-size="12"], .dg text[font-size="12.5"] { font-size: 13.5px; }
+  .dg text[font-size="13"], .dg text[font-size="13.5"] { font-size: 14.5px; }
+  .prose td:first-child { white-space: normal; min-width: 8rem; }
+}

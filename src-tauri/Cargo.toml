@@ -1,0 +1,50 @@
+[package]
+name = "onkey"
+version = "0.1.0"
+description = "Sing along and see how in tune you are"
+authors = ["OnKey contributors"]
+license = "MIT"
+repository = "https://github.com/dsmurrell/onkey"
+edition = "2021"
+rust-version = "1.77.2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "onkey_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.2.0", features = [] }
+
+[dependencies]
+changzhun-core = { path = "../crates/changzhun-core" }
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.5.0", features = ["protocol-asset", "macos-private-api"] }
+rtrb = "0.3"
+ort = { version = "=2.0.0-rc.10", features = ["coreml"] }
+ndarray = "0.16"
+ureq = { version = "2", features = ["json"] }
+urlencoding = "2"
+realfft = "3"
+hyphenation = { version = "0.8", features = ["embed_en-us"] }
+# already in the tree (via tauri and ort); used directly to quit gracefully on SIGTERM
+libc = "0.2"
+# already in the tree (via tauri); used directly to zip a problem report (report.rs)
+flate2 = "1"
+crc32fast = "1"
+# updates from GitHub Releases (latest.json, checked against the public key in tauri.conf.json): updater.rs
+tauri-plugin-updater = { version = "2.12", default-features = false, features = ["native-tls"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# already in the tree via tauri/tao; used directly to hide the window buttons in mini mode
+objc2 = "0.6"
+objc2-app-kit = { version = "0.3", default-features = false, features = ["std", "NSResponder", "NSWindow", "NSView", "NSControl", "NSButton", "NSRunningApplication", "NSWorkspace", "NSPanel", "NSSavePanel", "NSApplication"] }
+# (the save panel's file name and folder; asking macOS whether a music app is running, without a process)
+objc2-foundation = { version = "0.3", default-features = false, features = ["std", "NSString", "NSURL", "NSArray", "NSLocale"] }
+
+[features]
+# development-only test hooks (simulated singer, event log, keeping audio for tests); never in release builds
+devtest = []
